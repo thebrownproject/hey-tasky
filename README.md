@@ -1,38 +1,73 @@
-# sv
+# HeyTasky
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+![Status](https://img.shields.io/badge/status-complete-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
+![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?logo=svelte&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
 
-## Creating a project
+> AI-powered task manager that uses OpenAI API to automatically enhance and restructure user task inputs
 
-If you're seeing this, you've probably already done this step. Congrats!
+🔗 **Live Demo:** *Coming soon*
+
+---
+
+## Overview
+
+HeyTasky transforms the way users create to-do items by integrating AI directly into the task creation workflow. Users enter tasks in natural language, and the OpenAI API automatically reformats them into clear, actionable to-do items. The application demonstrates a practical use case for LLM integration in productivity tools, showing how AI can enhance user input without requiring structured formats.
+
+---
+
+## Tech Stack
+
+**Frontend:** SvelteKit · TypeScript · TailwindCSS
+**AI/ML:** OpenAI API
+**Data Persistence:** LocalStorage
+**State Management:** Svelte 5 Runes
+
+---
+
+## Features
+
+- Natural language task input processed through OpenAI API
+- Real-time AI transformation of user input into formatted tasks
+- Full CRUD operations (create, read, update, delete)
+- LocalStorage persistence across browser sessions
+- Responsive UI with loading states during AI processing
+- Component-based architecture with TypeScript type safety
+
+---
+
+## Architecture & Tech Decisions
+
+Built with SvelteKit and the OpenAI API to explore AI-augmented user interfaces. The application uses a simple but effective pattern: intercepting user input before storage, processing it through OpenAI's API with a custom system prompt, then storing the enhanced version. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
+
+---
+
+## Learnings & Challenges
+
+**Key Learnings:**
+- Implementing OpenAI API integration in a SvelteKit application
+- Managing asynchronous AI responses with proper loading states and error handling
+- Using Svelte 5's runes ($state, $effect) for reactive state management
+- Balancing user experience with AI processing latency
+
+**Challenges Overcome:**
+- Preventing duplicate localStorage saves during hydration (solved with onMount flag)
+- Designing prompts that consistently return clean, formatted task descriptions
+- Managing component state across create/edit modes with TypeScript type safety
+
+---
+
+## Quick Start
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Requires .env with OPENAI_API_KEY
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
+Create a `.env` file in the project root:
+```
+OPENAI_API_KEY=your_api_key_here
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
