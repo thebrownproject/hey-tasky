@@ -5,7 +5,7 @@
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?logo=svelte&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
 
-> AI-powered task manager with a JARVIS inspired personality that transforms boring tasks into witty, actionable to-dos
+> AI-powered task manager that uses OpenAI API to automatically enhance and restructure user task inputs
 
 🔗 **Live Demo:** [heytasky.netlify.app](https://heytasky.netlify.app)
 
@@ -13,7 +13,7 @@
 
 ## Overview
 
-HeyTasky transforms the way users create to-do items by integrating AI directly into the task creation workflow. Users enter tasks in natural language, and the OpenAI API automatically transforms them into JARVIS inpired to-do items with wit and personality. The application demonstrates a practical use case for LLM integration in productivity tools, showing how AI can enhance user input without requiring structured formats.
+HeyTasky transforms the way users create todos by integrating AI directly into the task creation workflow. Users enter tasks in natural language, and the OpenAI API automatically transforms them into JARVIS inpired tasks with wit and personality. The application demonstrates a practical use case for LLM integration in productivity tools, showing how AI can enhance user input without requiring structured formats.
 
 ---
 
@@ -41,7 +41,7 @@ HeyTasky transforms the way users create to-do items by integrating AI directly 
 
 ## Architecture & Tech Decisions
 
-Built with SvelteKit and the OpenAI API to explore AI-augmented user interfaces. The application uses a secure server-side architecture: user input is sent to a SvelteKit API endpoint which processes it through OpenAI's API with a custom JARVIS-inspired system prompt, then returns the enhanced version. This keeps API keys secure on the server, never exposing them to the browser. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
+Built with SvelteKit and the OpenAI API to explore AI-augmented user interfaces. The application uses a secure server-side architecture. The user input is sent to a SvelteKit API endpoint which processes it through OpenAI's API with a custom JARVIS-inspired system prompt, then returns the enhanced version. This keeps API keys secure on the server, never exposing them to the browser. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
 
 ---
 
