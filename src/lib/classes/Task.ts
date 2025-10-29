@@ -1,9 +1,16 @@
-export class listItem {
-	id: number;
-	description: string;
+import { v4 as uuidv4 } from 'uuid';
 
-	constructor(id: number, description: string) {
-		this.id = id;
+/**
+ * Represents a task in the todo list
+ */
+export class Task {
+	id: string;
+	description: string;
+	completed: boolean;
+
+	constructor(description: string, id?: string, completed: boolean = false) {
+		this.id = id || uuidv4();
 		this.description = description;
+		this.completed = completed;
 	}
 }

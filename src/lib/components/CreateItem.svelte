@@ -1,27 +1,23 @@
 <script lang="ts">
-	import { GoogleGenerativeAI } from '@google/generative-ai';
+	import { generateTaskDescription } from '$lib/services/openai';
 
 	let prompt = $state('');
 	let isLoading = $state(false);
+	let errorMessage = $state('');
 	let { onSubmit } = $props();
 
-	// Google Generative AI
-	const genAi = new GoogleGenerativeAI('AIzaSyBA3NI1Mh5Q2RJfGL6CTt1F9jQcFDo0Yh0');
-	const model = genAi.getGenerativeModel({ model: 'gemini-2.0-flash' });
-
 	async function processAiTaskInput() {
+		errorMessage = '';
 		if (!prompt.trim()) return;
 
 		isLoading = true;
-		const combinedPrompt = `You are a productivity assistant. You are also sassy. Your task is to convert the following input into a clear, and actionable to-do item. Only return the task text—do not include any introductions, explanations, or extra formatting.
-        User Input: ${prompt}`;
 		try {
-			const result = await model.generateContent(combinedPrompt);
-			const AiResponse = result.response.text().trim();
-			onSubmit(AiResponse);
+			const formattedTask = await generateTaskDescription(prompt);
+			onSubmit(formattedTask);
 			prompt = '';
 		} catch (error) {
-			console.error('Error generating content:', error);
+			console.error('Error generating task:', error);
+			errorMessage = 'Failed to generate task. Please try again.';
 		} finally {
 			isLoading = false;
 		}
@@ -35,40 +31,26 @@
 </script>
 
 <div class="mb-6">
-	<h3 class="text-lg font-semibold text-purple-300 mb-3 flex items-center">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-5 w-5 mr-2"
-			viewBox="0 0 20 20"
-			fill="currentColor"
-		>
-			<path
-				fill-rule="evenodd"
-				d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-				clip-rule="evenodd"
-			/>
-		</svg>
-		Create New Task with AI
+	<h3 class="text-sm font-medium text-gray-400 mb-3 tracking-wider">
+		Create New Task
 	</h3>
 
-	<div
-		class="flex items-center space-x-2 bg-gray-900/50 p-2 rounded-lg backdrop-blur-sm shadow-xl border border-purple-500/20 transition-all duration-300 hover:border-purple-500/40 hover:shadow-purple-500/10"
-	>
+	<div class="flex items-center gap-2">
 		<input
 			type="text"
 			bind:value={prompt}
 			on:keydown={handleKeydown}
 			placeholder="Enter your task and let AI help format it"
-			class="flex-1 bg-gray-800 text-white border-0 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500/70 placeholder-gray-400"
+			class="flex-1 bg-[#1f1f21] text-[#f7f8f8] border border-[#2a2a2a] rounded-md px-4 py-2.5 text-sm focus:outline-none focus:border-[#3a3a3a] placeholder-gray-500 transition-colors"
 		/>
 		<button
 			on:click={processAiTaskInput}
 			disabled={isLoading}
-			class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-3 rounded-md transition-all duration-200 shadow-lg hover:shadow-purple-500/20 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+			class="bg-[#e6e6e6] text-black px-4 py-2.5 rounded-md text-sm font-medium hover:bg-[#b8b8b8] transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 flex items-center justify-center min-w-[44px]"
 		>
 			{#if isLoading}
 				<svg
-					class="animate-spin h-5 w-5 text-white"
+					class="animate-spin h-4 w-4 text-black"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
@@ -84,7 +66,7 @@
 			{:else}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
+					class="h-4 w-4"
 					viewBox="0 0 20 20"
 					fill="currentColor"
 				>
@@ -98,7 +80,13 @@
 		</button>
 	</div>
 
-	<p class="text-xs text-gray-400 mt-2">
+	<p class="text-xs text-gray-500 mt-2">
 		Type your task and press Enter or click the button. AI will format it for you.
 	</p>
+
+	{#if errorMessage}
+		<p class="text-xs text-red-400 mt-2 bg-red-900/10 border border-red-900/30 px-3 py-2 rounded-md">
+			⚠️ {errorMessage}
+		</p>
+	{/if}
 </div>

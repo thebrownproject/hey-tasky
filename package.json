@@ -19,6 +19,7 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/postcss": "^4.0.15",
 		"@tailwindcss/vite": "^4.0.15",
+		"@types/uuid": "^10.0.0",
 		"autoprefixer": "^10.4.21",
 		"esbuild": "^0.25.1",
 		"postcss": "^8.5.3",
@@ -31,6 +32,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@google/generative-ai": "^0.24.0"
+		"openai": "^6.7.0",
+		"uuid": "^13.0.0"
 	}
 }
