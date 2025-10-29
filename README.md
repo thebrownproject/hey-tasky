@@ -7,7 +7,7 @@
 
 > AI-powered task manager that uses OpenAI API to automatically enhance and restructure user task inputs
 
-🔗 **Live Demo:** *Coming soon*
+🔗 **Live Demo:** [heytasky.netlify.app](https://heytasky.netlify.app)
 
 ---
 
