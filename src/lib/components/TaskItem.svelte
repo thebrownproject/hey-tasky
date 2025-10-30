@@ -32,7 +32,7 @@
 
 		{#if !isEditing}
 			<span
-				class="flex-1 text-[#f7f8f8] text-sm min-w-0 break-words"
+				class="flex-1 text-[#e6e6e6] text-sm min-w-0 break-words"
 				class:line-through={isCompleted}
 			>
 				{task.description}

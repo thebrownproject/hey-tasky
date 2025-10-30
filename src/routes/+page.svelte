@@ -11,14 +11,14 @@
 <div class="min-h-screen bg-[#08090a]">
 	<div class="max-w-2xl mx-auto px-6 py-16">
 		<div class="mb-8">
-			<h1 class="text-5xl font-semibold text-[#f7f8f8] tracking-tight">Hey Tasky</h1>
+			<h1 class="text-5xl font-semibold text-[#e6e6e6] tracking-tight">Hey Tasky</h1>
 		</div>
 
 		<div class="bg-[#131315] border border-[#222222] rounded-lg p-8 mb-6">
 			<CreateItem onSubmit={taskStore.addTask} />
 
 			<div class="mt-8">
-				<h2 class="text-sm font-medium text-gray-400 mb-4 tracking-wider">Your Tasks</h2>
+				<h2 class="text-sm font-medium text-[#e6e6e6] mb-4 tracking-wider">Your Tasks</h2>
 				<ItemView
 					taskList={taskStore.taskList}
 					editing={taskStore.editing}
