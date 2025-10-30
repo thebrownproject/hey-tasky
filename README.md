@@ -41,7 +41,7 @@ HeyTasky transforms the way users create todos by integrating AI directly into t
 
 ## Architecture & Tech Decisions
 
-Built with SvelteKit and the OpenAI API to explore AI-augmented user interfaces. The application uses a secure server-side architecture. The user input is sent to a SvelteKit API endpoint which processes it through OpenAI's API with a custom JARVIS-inspired system prompt, then returns the enhanced version. This keeps API keys secure on the server, never exposing them to the browser. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
+Built with SvelteKit and the OpenAI API to explore AI augmented user interfaces. The application uses a secure server-side architecture. The user input is sent to a SvelteKit API endpoint which processes it through OpenAI's API with a custom JARVIS inspired system prompt, then returns the enhanced version. This keeps API keys secure on the server, never exposing them to the browser. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
 
 ### Key Technical Decisions
 
