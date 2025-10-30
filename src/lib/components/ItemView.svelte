@@ -14,7 +14,7 @@
 	{#if activeTasks.length === 0}
 		<div
 			transition:fade={{ duration: 200 }}
-			class="bg-black/50 border border-[#1a1a1a] p-8 rounded-lg text-center text-gray-500 text-sm"
+			class="bg-[#1f1f21] border border-[#2a2a2a] p-8 rounded-lg text-center text-gray-500 text-sm"
 		>
 			{#if completedTasks.length > 0}
 				All tasks completed!
