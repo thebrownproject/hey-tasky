@@ -16,7 +16,11 @@
 			transition:fade={{ duration: 200 }}
 			class="bg-black/50 border border-[#1a1a1a] p-8 rounded-lg text-center text-gray-500 text-sm"
 		>
-			No tasks yet. Add your first task above!
+			{#if completedTasks.length > 0}
+				All tasks completed!
+			{:else}
+				No tasks yet. Add your first task above!
+			{/if}
 		</div>
 	{:else}
 		{#each activeTasks as task (task.id)}
