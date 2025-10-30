@@ -22,7 +22,6 @@ export async function generateTaskDescription(userInput: string): Promise<string
 		const { taskDescription } = await response.json();
 		return taskDescription;
 	} catch (error) {
-		console.error('API Error:', error);
 		throw new Error(
 			`Failed to generate task: ${error instanceof Error ? error.message : 'Unknown error'}`
 		);

@@ -16,8 +16,18 @@ export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const { userInput } = await request.json();
 
+		// Validate input
 		if (!userInput?.trim()) {
 			return json({ error: 'Task input cannot be empty' }, { status: 400 });
+		}
+
+		// Prevent API cost abuse with length limit
+		const maxInputLength = 500;
+		if (userInput.length > maxInputLength) {
+			return json(
+				{ error: `Task input too long (max ${maxInputLength} characters)` },
+				{ status: 400 }
+			);
 		}
 
 		const completion = await openai.chat.completions.create({
@@ -45,11 +55,12 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		return json({ taskDescription });
 	} catch (error) {
+		// Log detailed error server-side for debugging
 		console.error('OpenAI API Error:', error);
+
+		// Return generic message to client (don't expose API internals)
 		return json(
-			{
-				error: `Failed to generate task: ${error instanceof Error ? error.message : 'Unknown error'}`
-			},
+			{ error: 'Failed to generate task. Please try again.' },
 			{ status: 500 }
 		);
 	}

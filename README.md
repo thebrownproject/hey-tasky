@@ -43,6 +43,32 @@ HeyTasky transforms the way users create todos by integrating AI directly into t
 
 Built with SvelteKit and the OpenAI API to explore AI-augmented user interfaces. The application uses a secure server-side architecture. The user input is sent to a SvelteKit API endpoint which processes it through OpenAI's API with a custom JARVIS-inspired system prompt, then returns the enhanced version. This keeps API keys secure on the server, never exposing them to the browser. Chose LocalStorage for data persistence to keep the project lightweight and client-side focused. Svelte 5's new runes provide clean reactivity patterns for managing task state and edit modes.
 
+### Key Technical Decisions
+
+**Server-Side API Proxy**
+API keys must never reach the browser where they can be extracted from the client bundle. SvelteKit's `+server.ts` routes execute server-side only, allowing secure API calls while keeping secrets in `$env/static/private`. This BFF (Backend For Frontend) pattern is essential for any client application using paid APIs.
+
+**LocalStorage Over Database**
+Chose LocalStorage to keep the project simple and demonstrate the AI integration without infrastructure complexity. For a production application, I would use PostgreSQL with proper authentication and row-level security to enable multi-device sync and better data integrity.
+
+**Model Selection: gpt-4o-mini**
+Balances cost ($0.15/1M tokens vs $2.50/1M for GPT-4) with quality. Full GPT-4 is overkill for task formatting - the mini variant is fast, cost-effective, and produces excellent results for this use case. Temperature set to 0.9 for creative variety in the JARVIS style responses.
+
+**Service Layer Pattern**
+Abstracted API calls into `src/lib/services/openai.ts` rather than calling fetch directly from components. This separates concerns, makes the code more testable, and provides a single place to modify API logic if requirements change.
+
+**Component Composition**
+Broke the UI into focused components (`CreateItem`, `ItemView`, `TaskItem`) with clear responsibilities. Each component receives only the props it needs rather than passing the entire store, making dependencies explicit and components easier to reason about.
+
+### Production Considerations
+
+While this portfolio project demonstrates core functionality, a production version would require:
+
+- **Rate limiting** to prevent API cost abuse via SvelteKit hooks tracking requests per session
+- **Database persistence** (PostgreSQL with authentication) for multi-device sync and data durability
+- **Enhanced input validation** beyond length checks (content filtering, sanitization)
+- **Graceful degradation** allowing basic task creation when the AI service is unavailable
+
 ---
 
 ## Learnings & Challenges

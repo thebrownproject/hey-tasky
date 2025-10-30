@@ -11,8 +11,7 @@
 <div class="min-h-screen bg-[#08090a]">
 	<div class="max-w-2xl mx-auto px-6 py-16">
 		<div class="mb-8">
-			<h1 class="text-5xl font-semibold text-[#f7f8f8] mb-3 tracking-tight">Hey Tasky</h1>
-			<p class="text-base text-[#f7f8f8]/70 font-normal">like Hey Siri.. but with more sass</p>
+			<h1 class="text-5xl font-semibold text-[#f7f8f8] tracking-tight">Hey Tasky</h1>
 		</div>
 
 		<div class="bg-[#131315] border border-[#222222] rounded-lg p-8 mb-6">

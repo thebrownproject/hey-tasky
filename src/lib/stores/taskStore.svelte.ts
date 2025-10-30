@@ -1,5 +1,21 @@
 import { Task } from '$lib/classes/Task';
-import type { StoredTask, EditingState } from '$lib/types';
+
+/**
+ * Represents a task stored in localStorage
+ */
+interface StoredTask {
+	id: string;
+	description: string;
+	completed?: boolean;
+}
+
+/**
+ * State for tracking which task is currently being edited
+ */
+interface EditingState {
+	id: string | null;
+	description: string;
+}
 
 class TaskStore {
 	taskList = $state<Task[]>([]);
@@ -21,7 +37,7 @@ class TaskStore {
 						);
 					}
 				} catch (error) {
-					console.error('Error loading tasks from localStorage:', error);
+					// Silently fail - localStorage may be corrupted or unavailable
 				}
 			}
 		}

@@ -4,7 +4,10 @@
 	let prompt = $state('');
 	let isLoading = $state(false);
 	let errorMessage = $state('');
-	let { onSubmit } = $props();
+
+	let { onSubmit } = $props<{
+		onSubmit: (description: string) => void;
+	}>();
 
 	async function processAiTaskInput() {
 		errorMessage = '';
@@ -16,7 +19,6 @@
 			onSubmit(formattedTask);
 			prompt = '';
 		} catch (error) {
-			console.error('Error generating task:', error);
 			errorMessage = 'Failed to generate task. Please try again.';
 		} finally {
 			isLoading = false;
