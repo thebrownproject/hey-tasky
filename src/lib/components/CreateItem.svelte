@@ -42,7 +42,7 @@
 			type="text"
 			bind:value={prompt}
 			on:keydown={handleKeydown}
-			placeholder="Enter your task and let AI help format it"
+			placeholder="Enter your task and AI will format it for you"
 			class="flex-1 bg-[#1f1f21] text-[#f7f8f8] border border-[#2a2a2a] rounded-md px-4 py-2.5 text-sm focus:outline-none focus:border-[#3a3a3a] placeholder-gray-500 transition-colors"
 		/>
 		<button
@@ -81,10 +81,6 @@
 			{/if}
 		</button>
 	</div>
-
-	<p class="text-xs text-gray-500 mt-2">
-		Type your task and press Enter or click the button. AI will format it for you.
-	</p>
 
 	{#if errorMessage}
 		<p class="text-xs text-red-400 mt-2 bg-red-900/10 border border-red-900/30 px-3 py-2 rounded-md">
