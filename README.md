@@ -19,10 +19,10 @@ HeyTasky transforms the way users create todos by integrating AI directly into t
 
 ## Tech Stack
 
-**Frontend:** SvelteKit · TypeScript · TailwindCSS
-**AI/ML:** OpenAI API
-**Data Persistence:** LocalStorage
-**State Management:** Svelte 5 Runes
+**Frontend:** SvelteKit · TypeScript · TailwindCSS <br>
+**AI/ML:** OpenAI API <br>
+**Data Persistence:** LocalStorage <br>
+**State Management:** Svelte 5 Runes <br>
 
 ---
 
