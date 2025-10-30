@@ -33,7 +33,7 @@
 </script>
 
 <div class="mb-6">
-	<h3 class="text-sm font-medium text-[#e6e6e6] mb-3 tracking-wider">
+	<h3 class="text-sm font-medium text-gray-400 mb-3 tracking-wider">
 		Create New Task
 	</h3>
 

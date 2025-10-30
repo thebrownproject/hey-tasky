@@ -18,7 +18,7 @@
 			<CreateItem onSubmit={taskStore.addTask} />
 
 			<div class="mt-8">
-				<h2 class="text-sm font-medium text-[#e6e6e6] mb-4 tracking-wider">Your Tasks</h2>
+				<h2 class="text-sm font-medium text-gray-400 mb-4 tracking-wider">Your Tasks</h2>
 				<ItemView
 					taskList={taskStore.taskList}
 					editing={taskStore.editing}

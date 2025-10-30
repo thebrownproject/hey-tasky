@@ -36,7 +36,7 @@
 <!-- Completed Tasks Section -->
 {#if completedTasks.length > 0}
 	<div class="mt-8 space-y-2">
-		<h3 class="text-sm font-medium text-[#e6e6e6] mb-4 tracking-wider">Completed Tasks</h3>
+		<h3 class="text-sm font-medium text-gray-400 mb-4 tracking-wider">Completed Tasks</h3>
 		{#each completedTasks as task (task.id)}
 			<TaskItem
 				{task}
